@@ -1,4 +1,3 @@
-const express = require('express')
 const { mongoose, mongo } = require('mongoose')
 
 const EventSchema = new mongoose.Schema({
