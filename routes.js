@@ -24,18 +24,19 @@ router.post('/add/matches',(req,res)=>{
 
 
 //Get all the current events
+router.get('/events',async (req,res)=>{
+    const events = await EventModel.find()
+    res.send(events)
+})
 
 
 
-//Get all the current Matches
-
-
-
-//Get all the past matches
-
-
-
-//Get all the upcoming matches
+//Get all the Matches based on PREV, CURR or NEXT
+router.get('/matches/:id',async (req,res)=>{
+    const time = req.params.id
+    const matches = await matchModels.find({"timing":`${time}`})
+    res.send(matches)
+})
 
 
 
