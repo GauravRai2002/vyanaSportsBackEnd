@@ -12,6 +12,25 @@ const EventSchema = new mongoose.Schema({
     },
     e_logo:{
         type:String,
+    },
+    timing:{
+        type:String,
+        required:true
+    },
+    rules:{
+        type:[],
+        required:false
+    },
+    schedule:{
+        type:[],
+        required:false
+    },
+    result:{
+        type:[]
+    },
+    videos:{
+        type:[],
+        required:false
     }
 })
 

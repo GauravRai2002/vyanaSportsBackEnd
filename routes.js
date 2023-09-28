@@ -1,44 +1,36 @@
 const express = require('express')
 const router = express.Router()
+const io = require('./index')
 
 const EventModel  = require('./Models/eventModel')
-const matchModels = require('./Models/matchesModel')
+const { Socket } = require('socket.io')
 
 //Add the events
 
-router.post('/add/events',(req,res)=>{
-    console.log('req.body')
+router.post('/add/events',async (req,res)=>{
+    // console.log(req.body)
+
     const event = new EventModel(req.body)
     event.save()
     res.send(req.body)
 })
-
-
-//Add the matches
-router.post('/add/matches',(req,res)=>{
-    console.log('req.body')
-    const match = new matchModels(req.body)
-    match.save()
-    res.send(req.body)
-})
-
-
-//Get all the current events
 router.get('/events',async (req,res)=>{
     const events = await EventModel.find()
     res.send(events)
 })
 
-
-
-//Get all the Matches based on PREV, CURR or NEXT
-router.get('/matches/:id',async (req,res)=>{
-    const time = req.params.id
-    const matches = await matchModels.find({"timing":`${time}`})
-    res.send(matches)
+router.get('/events/:id',async (req,res)=>{
+    // console.log(req)
+    const id = req.params.id
+    const events = await EventModel.findOne({'e_id':`${id}`})
+    res.send(events)
 })
 
-
+router.put('/edit/event/:id',async(req,res)=>{
+    const id = req.params.id
+    const updateEvents = await EventModel.updateOne({'e_id':`${id}`},req.body)
+    res.send(updateEvents)
+})
 
 
 module.exports = router
