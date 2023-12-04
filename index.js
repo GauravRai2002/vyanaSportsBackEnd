@@ -5,7 +5,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const app = express();
 const PORT = 8000;
-const EventModel  = require('./Models/eventModel')
+// const EventModel  = require('./Models/eventModel')
 app.use(bodyParser.json({ limit: '50mb' }))
 app.use(bodyParser.urlencoded({
     parameterLimit: 100000,

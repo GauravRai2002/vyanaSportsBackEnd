@@ -14,7 +14,10 @@ router.post('/add/events',async (req,res)=>{
     res.send(req.body)
 })
 router.get('/events',async (req,res)=>{
-    const events = await EventModel.find()
+    var events = await EventModel.find()
+    console.log(events)
+    events.reverse()
+    console.log(events)
     res.send(events)
 })
 
