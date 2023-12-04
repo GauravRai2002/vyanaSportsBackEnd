@@ -15,7 +15,6 @@ router.post('/add/events',async (req,res)=>{
 })
 router.get('/events',async (req,res)=>{
     var events = await EventModel.find()
-    console.log(events)
     events.reverse()
     console.log(events)
     res.send(events)
@@ -40,6 +39,23 @@ router.get('/events/:id',async (req,res)=>{
 router.put('/edit/event/:id',async(req,res)=>{
     const id = req.params.id
     const updateEvents = await EventModel.updateOne({'e_id':`${id}`},req.body)
+    res.send(updateEvents)
+})
+
+router.put('/add/videos/:id',async(req,res)=>{
+    const id = req.params.id
+    console.log(req.body)
+    const updateEvents = await EventModel.updateOne({'e_id':`${id}`},{
+        $set: req.body
+    })
+    res.send(updateEvents)
+})
+
+router.put('/add/teams/:id',async(req,res)=>{
+    const id = req.params.id
+    const updateEvents = await EventModel.updateOne({'e_id':`${id}`},{
+        $set: req.body
+    })
     res.send(updateEvents)
 })
 

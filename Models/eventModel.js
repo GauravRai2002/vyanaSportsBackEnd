@@ -31,6 +31,10 @@ const EventSchema = new mongoose.Schema({
     videos:{
         type:[],
         required:false
+    },
+    teams:{
+        type:[],
+        required:false
     }
 })
 
