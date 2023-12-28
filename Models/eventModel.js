@@ -35,6 +35,10 @@ const EventSchema = new mongoose.Schema({
     teams:{
         type:[],
         required:false
+    },
+    cricheroes:{
+        type:String,
+        required:false
     }
 })
 
