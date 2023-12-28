@@ -51,6 +51,16 @@ router.put('/add/videos/:id',async(req,res)=>{
     res.send(updateEvents)
 })
 
+
+router.put('/add/link/:id',async(req,res)=>{
+    const id = req.params.id
+    console.log(req.body)
+    const updateEvents = await EventModel.updateOne({'e_id':`${id}`},{
+        $set: req.body
+    })
+    res.send(updateEvents)
+})
+
 router.put('/add/teams/:id',async(req,res)=>{
     const id = req.params.id
     const events = await EventModel.findOne({'e_id':`${id}`})
